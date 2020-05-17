@@ -16,7 +16,7 @@
 
     <div class="field" *ngIf="authService.isHelper()">
       <label>Gesamtpreis in €:</label>
-      <input type="number" formControlName="price">
+      <input type="number" min="0" step="0.01" formControlName="price">
       <div *ngIf="errors.price" class="ui negative message">{{errors.price }}</div>
     </div>
 
@@ -34,7 +34,7 @@
           </div>
           <div class="six wide field">
             <label>Preis/Stück:</label>
-            <input formControlName="max_price" placeholder="Maximaler Preis">
+            <input formControlName="max_price" type="number" step="0.01" placeholder="Maximaler Preis">
           </div>
           <div class="one wide field" *ngIf="l">
             <button (click)="addListentriesControl()" class="ui large button addbutton" type="button">+</button>
