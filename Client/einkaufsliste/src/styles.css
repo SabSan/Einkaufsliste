@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,400&family=Roboto&display=swap rel="stylesheet');
+@import url('https://kit.fontawesome.com/4649f8838f.js');
+
+* {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+div.ui.grid, div.ui.middle.aligned.selection.divided.list {
+  margin: 1% !important;
+}
+
+h1 {
+  margin: 1% !important;
+  color: #0570af;
+}
+
+.content {
+  margin:0.5%!important;
+}
+
+.done {
+  color: rgb(67, 157, 69);
+}
+
+.assignedlists {
+  color: #636b6f;
+  margin: 0.5%!important;
+  padding: 0.5% !important;
+  border-bottom: 1px solid #e4e4e4 !important;
+}
+
+.assignedlists:hover {
+  background-color: #e4e4e4;
+  color: #000;
+}
+
+.menu a:hover{
+  background-color: #7ACBE6 !important;
+}
+
+.ui.button.standard {
+  background-color: #7ACBE6;
+  color: #2f4248;
+}
+
+.ui.button.standard:hover {
+  color: white;
+  background-color: #2f4248;
+}
+
+.ui.button.addbutton {
+  margin-top: 25px;
+}
+
+.ui.button.takeList {
+  /*background-color: #FFC375;*/
+  background-color: #FCB992;
+}
+
+.formwidth {
+  width: 50vw;
+  margin:auto;
+}
+
+.listentry {
+  margin-bottom: 2%;
+}
+
+.listentry h4 {
+  margin: 0 !important;
+}

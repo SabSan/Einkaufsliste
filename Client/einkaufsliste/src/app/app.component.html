@@ -1,0 +1,16 @@
+<div class="ui {{ isLoggedIn()?'four':'two'}} item tabs menu">
+  <a routerLink="home" routerLinkActive="active" class="item">Home</a>
+
+  <!-- Routen für Hilfesuchende - eigene Listen & neue Listen -->
+  <a *ngIf="isLoggedIn() && !this.authService.isHelper()" routerLink="lists" routerLinkActive="active" class="item">Meine Listen</a>
+  <a *ngIf="isLoggedIn() && !this.authService.isHelper()" routerLink="admin" routerLinkActive="active"  class= "item" >Liste anlegen</a>
+
+  <!-- Routen für Freiwillige - alle Listen & übernommene Listen -->
+  <a *ngIf="isLoggedIn() && this.authService.isHelper()" routerLink="lists" routerLinkActive="active" class="item">Alle Einkaufslisten</a>
+  <a *ngIf="isLoggedIn() && this.authService.isHelper()" routerLink="assigned" routerLinkActive="active"  class= "item" >Übernommene Listen</a>
+
+  <a routerLink="login" routerLinkActive="active" class="item">{{ getLoginLabel()}}</a>
+
+</div>
+
+<router-outlet></router-outlet>

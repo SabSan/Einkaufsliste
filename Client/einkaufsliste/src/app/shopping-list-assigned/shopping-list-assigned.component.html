@@ -1,0 +1,22 @@
+<h1>KWM gegen Corona - Einkaufsplattform</h1>
+<p class="content">Bereits erledigte Listen werden mit einer grünen Überschrift dargestellt.
+  (Eine Liste gilt als erledigt, wenn der Gesamtpreis eingetragen wurde.)</p>
+<a *ngFor="let shoppinglist of shoppinglists" class="item" [routerLink]="['../lists', shoppinglist.id]">
+
+  <div *ngIf="!shoppinglists " class="ui active dimmer">
+    <div class="ui large text loader">Listen werden geladen...</div>
+  </div>
+  <p *ngIf="shoppinglists && !shoppinglists.length">Es wurden noch keine Einkaufslisten übernommen.</p>
+
+  <div class="content assignedlists">
+    <div><h3 [ngClass]="{'done' : shoppinglist.price}">{{ shoppinglist.title }}</h3></div>
+    <div class="description">
+      <i>{{shoppinglist.creator['firstname']}} {{shoppinglist.creator['lastname']}},
+        {{shoppinglist.creator['address']}}</i>
+    </div>
+    <div class="description">Zu erledigen bis: {{ shoppinglist.bought_until | date: 'longDate' }}
+    </div>
+  </div>
+
+
+</a>

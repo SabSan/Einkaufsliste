@@ -1,0 +1,65 @@
+<div class="formwidth">
+  <h1>Einkaufsliste</h1>
+  <form class="ui large form" [formGroup]="shoppinglistForm" (ngSubmit)="submitForm()">
+    <input type="hidden" name="id">
+    <div class="field">
+      <label>Titel der Liste</label>
+      <input type="text" formControlName="title">
+      <div *ngIf="errors.title" class="ui negative message"> {{ errors.title}} </div>
+    </div>
+
+    <div class="field">
+      <label>Fällig bis:</label>
+      <input type="date" formControlName="bought_until" required="required">
+      <div *ngIf="errors.bought_until" class="ui negative message">{{errors.bought_until }}</div>
+    </div>
+
+    <div class="field" *ngIf="authService.isHelper()">
+      <label>Gesamtpreis in €:</label>
+      <input type="number" formControlName="price">
+      <div *ngIf="errors.price" class="ui negative message">{{errors.price }}</div>
+    </div>
+
+    <div class="field">
+      <div formArrayName="listentries">
+        <div class="fields" *ngFor="let control of listentries?.controls; index as i; last as l" [formGroupName]="i">
+          <input type="hidden" name="id">
+          <div class="nine wide field">
+            <label>Gegenstand:</label>
+            <input formControlName="description" placeholder="Gegenstand">
+          </div>
+          <div class="six wide field">
+            <label>Menge:</label>
+            <input formControlName="amount" placeholder="Menge">
+          </div>
+          <div class="six wide field">
+            <label>Preis/Stück:</label>
+            <input formControlName="max_price" placeholder="Maximaler Preis">
+          </div>
+          <div class="one wide field" *ngIf="l">
+            <button (click)="addListentriesControl()" class="ui large button addbutton" type="button">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <div formArrayName="feedbacks">
+        <div class="fields" *ngFor="let control of feedbacks?.controls; index as i; last as l" [formGroupName]="i">
+          <input type="hidden" name="user_id">
+          <div class="nine wide field">
+            <label>Kommentar-Titel:</label>
+            <input formControlName="title" placeholder="Kommentar-Titel" >
+          </div>
+          <div class="nine wide field">
+            <label>Kommentar:</label>
+            <input formControlName="body" placeholder="Kommentar" >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="ui button" [disabled]="shoppinglistForm.invalid">Speichern</button>
+
+  </form>
+</div>

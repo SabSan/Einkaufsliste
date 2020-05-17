@@ -1,0 +1,111 @@
+<div class="ui grid">
+  <div class="twelve wide column">
+    <h1 class="ui header"> {{shoppinglist.title}} </h1>
+    <div class="ui divider"></div>
+
+    <div class="ui grid">
+      <div class="six wide column">
+        <h3>Ersteller</h3>
+        <div class="creator">
+          {{shoppinglist.creator['firstname']}} {{shoppinglist.creator['lastname']}} <br/>
+          <span *ngIf="authService.isLoggedIn()">{{shoppinglist.creator['address']}}</span>
+        </div>
+
+        <span><b>Erledigt bis: {{ shoppinglist?.bought_until | date: 'longDate' }}</b></span>
+        <div class="ui divider"></div>
+        <div class="two column">
+          <button [routerLink]="'/lists'" class="ui button standard">Zurück zu den Einkaufslisten</button>
+          <br/><br/>
+          <button *ngIf="authService.isLoggedIn() && !shoppinglist.helper && !authService.isHelper()"
+                  [routerLink]="['/../../admin', shoppinglist?.id]" class="ui button standard">Liste bearbeiten
+          </button>
+          <br/><br/>
+          <button *ngIf="authService.isLoggedIn() && !shoppinglist.helper && !authService.isHelper()"
+                  class="ui red button" (click)="removeList()">
+            Liste löschen
+          </button>
+
+        </div>
+      </div>
+
+      <div class="four wide column">
+        <!-- Abfragen ob Helfer schon da -->
+        <span *ngIf="!shoppinglist.helper">
+          <button *ngIf="authService.isLoggedIn() && this.authService.isHelper()" (click)="claimList()"
+                  class="ui button takeList">Liste übernehmen!</button>
+        </span>
+        <div class="helper" *ngIf="shoppinglist.helper">
+          <h3>Helfer</h3>
+          <i>{{shoppinglist.helper['firstname']}} {{shoppinglist.helper['lastname']}}</i>
+          <div class="preis" *ngIf="shoppinglist.price"> Gesamtpreis: {{shoppinglist?.price}} </div>
+          <br/><br/>
+          <!-- Preis hinzufügen -->
+          <button [routerLink]="['/../../admin', shoppinglist?.id]"
+                  *ngIf="!shoppinglist.price && this.authService.isHelper()"
+                  class="ui button standard">Preis hinzufügen
+          </button>
+        </div>
+      </div>
+
+      <div class="ui grid">
+        <div>
+          <h3>Einkaufsliste</h3>
+          <div class="listentry" *ngFor="let entry of shoppinglist.listentries">
+            <h4>{{ entry.description }}</h4>
+            Menge: {{ entry.amount }} <br/>
+            Maximaler Preis: {{ entry.max_price }} € (pro Stück)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="six wide column" *ngIf="authService.isLoggedIn() && shoppinglist.feedbacks">
+    <div class="formwidth">
+      <h2>Kommentare</h2>
+
+      <div class="listentry" *ngFor="let feed of shoppinglist.feedbacks">
+        <h4>{{ feed['title'] }}</h4>
+        {{ feed['body'] }} <br/>
+        <i>Kommentar von: {{ feed.user_id }} am {{feed.created_at | date: 'longDate'}}</i>
+      </div>
+
+      <form class="ui large form" *ngIf="feedbackForm" [formGroup]="feedbackForm" (ngSubmit)="submitForm()">
+        <!-- <form class="ui large form" *ngIf="shoppinglistForm" [formGroup]="shoppinglistForm" (ngSubmit)="submitForm()">
+          <div class="field">
+            <div formArrayName="feedbacks">
+              <div class="fields" *ngFor="let control of feedbacks?.controls; index as i; last as l" [formGroupName]="i">
+                <input type="hidden" name="user_id">
+                <div class="nine wide field">
+                  <label>Kommentar-Titel:</label>
+                  <input formControlName="title" placeholder="Kommentar-Titel" >
+                </div>
+                <div class="nine wide field">
+                  <label>Kommentar:</label>
+                  <input formControlName="body" placeholder="Kommentar" >
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="field">
+          <label>Titel des Kommentars <b>(optional)</b></label>
+          <input type="text" formControlName="title" placeholder="Titel des Kommentars">
+        </div>-->
+
+        <div class="field">
+          <label>Kommentar</label>
+          <textarea rows="4" cols="10" formControlName="body" placeholder="Kommentar"></textarea>
+        </div>
+
+        <button type="submit" class="ui button">Speichern</button>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+
+
+

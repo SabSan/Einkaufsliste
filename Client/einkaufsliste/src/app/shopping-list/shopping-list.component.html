@@ -1,0 +1,13 @@
+<h1>KWM gegen Corona - Einkaufsplattform</h1>
+<p class="content">Listen mit grüner Überschrift sind bereits erledigt!</p>
+<div >
+<div class="ui middle aligned selection divided list" >
+  <a *ngFor="let shoppinglist of shoppinglists" class="item bs-shopping-list-entry" [shoppinglist]="shoppinglist" [routerLink]="shoppinglist.id"> </a>
+
+  <div *ngIf="!shoppinglists " class= "ui active dimmer" >
+    <div class= "ui large text loader" >Listen werden geladen...</div>
+  </div>
+  <p *ngIf="shoppinglists && !shoppinglists.length" >Es wurden noch keine Einkaufslisten eingetragen.</p>
+
+</div>
+</div>

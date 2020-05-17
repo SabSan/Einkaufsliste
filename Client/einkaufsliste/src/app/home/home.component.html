@@ -1,0 +1,12 @@
+<div class="ui container">
+  <h1>KWM gegen Corona</h1>
+  <p>Willkomen auf unserer Einkaufsplattform. Hier können Hilfesuchende Einkaufslisten eingeben,
+  die von Helfern übernommen werden sollen. Viel Spaß!</p>
+  <a *ngIf="!authService.isLoggedIn()" [routerLink]="['../login']" class="ui button standard">
+    Loggen Sie sich ein
+  </a>
+
+  <a *ngIf="authService.isLoggedIn()" [routerLink]="['../lists']" class="ui button standard">
+    <i class="arrow alternate circle right outline"></i> Zu den Einkaufslisten
+  </a>
+</div>

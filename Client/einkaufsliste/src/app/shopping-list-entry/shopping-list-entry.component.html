@@ -1,0 +1,10 @@
+<div class="content">
+  <div><h3 [ngClass]="{'done' : shoppinglist.price}">{{ shoppinglist.title }}</h3></div>
+  <div class="description">
+    <i>{{shoppinglist.creator['firstname']}} {{shoppinglist.creator['lastname']}},
+      {{shoppinglist.creator['address']}}</i>
+  </div>
+  <div class="description">
+   Zu erledigen bis: {{ shoppinglist.bought_until | date: 'longDate' }}
+  </div>
+</div>
