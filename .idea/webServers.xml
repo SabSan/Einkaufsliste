@@ -2,12 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="6401ac8d-9120-494e-bdb1-7e24c63156c1" name="HETZNER" url="http://einkaufsliste.s1710456034.student.kwmhgb.at/bookstoreServer/public">
-        <fileTransfer host="einkaufsliste.s1710456034.student.kwmhgb.at" port="222" rootFolder="/usr/home/sstud118/public_html/einkaufsliste/bookstoreServer" accessType="SFTP">
+      <webServer id="6401ac8d-9120-494e-bdb1-7e24c63156c1" name="HETZNER" url="http://einkaufsliste.s1710456034.student.kwmhgb.at">
+        <fileTransfer host="einkaufsliste.s1710456034.student.kwmhgb.at" port="22" accessType="SFTP">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
           </advancedOptions>
-          <option name="port" value="222" />
+          <option name="port" value="22" />
         </fileTransfer>
       </webServer>
     </option>

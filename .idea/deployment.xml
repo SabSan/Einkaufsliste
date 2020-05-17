@@ -5,7 +5,7 @@
       <paths name="HETZNER">
         <serverdata>
           <mappings>
-            <mapping deploy="/" local="$PROJECT_DIR$/../Einkaufsliste/Server" web="/" />
+            <mapping deploy="/public_html/angular" local="$PROJECT_DIR$/Client/einkaufsliste/dist" web="/" />
           </mappings>
         </serverdata>
       </paths>
