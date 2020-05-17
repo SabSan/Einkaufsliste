@@ -58,10 +58,6 @@ class ShoppinglistController extends Controller
         DB::beginTransaction();
         try{
             $shoppinglist = Shoppinglist::create($request->all());
-
-            // Get User by ID & Prüfen if creator_id isset?
-            // if creator_id isset --> speichern in DB
-
             if(isset($request['listentries']) && is_array($request['listentries']) ){
                 foreach ($request['listentries'] as $lentry){
                     $listentry = Listentry::firstOrNew(['description' => $lentry['description'],
@@ -93,12 +89,8 @@ class ShoppinglistController extends Controller
             $shoppinglist = Shoppinglist::with(['listentries', 'creator', 'helper', 'feedbacks'])->where('id', $id)->first();
             if($shoppinglist != null){
                 $request = $this->parseRequest( $request );
-
                 $shoppinglist->update($request->all());
-
                 $shoppinglist->listentries()->delete();
-
-                // save listentries
                 if(isset($request['listentries']) && is_array($request['listentries']) ){
                     foreach ($request['listentries'] as $lentry){
                         $listentry = Listentry::firstOrNew(['description' => $lentry['description'],
