@@ -41,14 +41,8 @@ export class ShoppingListDetailsComponent implements OnInit {
       this.initFeedback();
     });
 
-    // this.sc.saveFeedback(params['id']).subscribe(feedback => {
-    //   this.feedback = feedback;
-    //   this.initFeedback();
-    // });
-
     console.log("CURR USER " + this.currUser);
     console.log("ROLE User " + this.roleUser);
-
   }
 
   initFeedback(){
