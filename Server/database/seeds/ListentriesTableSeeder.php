@@ -12,7 +12,7 @@ class ListentriesTableSeeder extends Seeder
     public function run()
     {
         $listentry1 = new \App\Listentry;
-        $listentry1->description = 'Banana';
+        $listentry1->description = 'Banane';
         $listentry1->amount = '1';
         $listentry1->max_price = 3;
 

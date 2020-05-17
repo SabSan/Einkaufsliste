@@ -30,10 +30,10 @@ class UsersTableSeeder extends Seeder
         $user2->save();
 
         $user3 = new \App\User;
-        $user3->firstname = 'Fransika';
-        $user3->lastname = 'Rußmann';
-        $user3->address = 'Schloßpark 11, 4232 Hagenberg';
-        $user3->email = 'FR@test.at';
+        $user3->firstname = 'Bilbo';
+        $user3->lastname = 'Beutlin';
+        $user3->address = 'Schloßpark 15, 4232 Hagenberg';
+        $user3->email = 'BB@test.at';
         $user3->password = bcrypt('secret2');
         $user3->role = 'helper';
         $user3->save();
@@ -46,15 +46,5 @@ class UsersTableSeeder extends Seeder
         $user4->password = bcrypt('secret3');
         $user4->role = 'creator';
         $user4->save();
-
-
-//        $list = new App\Shoppinglist;
-//        $list->title = 'Testliste';
-//        $list->bought_until = '2020-01-20';
-//        $list->price = 5;
-//        $user2 = App\User::find(1);
-//        $user2->shoppinglists()->save($list);
-
-
     }
 }

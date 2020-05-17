@@ -12,7 +12,7 @@ class FeedbackTableSeeder extends Seeder
     public function run()
     {
         $feedback = new App\Feedback;
-        $feedback->body = "Ein Text zum Kommentar";
+        $feedback->body = "Ein Kommentar Text";
 
         $user = App\User::all()->first();
         $feedback->user()->associate($user);
