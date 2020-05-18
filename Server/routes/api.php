@@ -14,16 +14,16 @@ use App\Shoppinglist;
 |
 */
 
-//Route::get('lists', 'ShoppinglistController@index');
-//Route::get('list/{id}', 'ShoppinglistController@findListById');
-//Route::get('list/checkid/{id}', 'ShoppinglistController@checkId');
-//Route::get('user/{id}', 'ShoppinglistController@findUserById');
-//Route::get('creator/{id}', 'ShoppinglistController@findListByCreatorId');
-//Route::get('helper/{id}', 'ShoppinglistController@findListByHelperId');
-//Route::get('lists', 'ShoppinglistController@findListWithoutHelperId');
-//
-//Route::put('list/{id}', 'ShoppinglistController@updateList');
-//Route::put('feedback/{id}', 'ShoppinglistController@saveFeedback');
+/* Route::get('lists', 'ShoppinglistController@index');
+Route::get('list/{id}', 'ShoppinglistController@findListById');
+Route::get('list/checkid/{id}', 'ShoppinglistController@checkId');
+Route::get('user/{id}', 'ShoppinglistController@findUserById');
+Route::get('creator/{id}', 'ShoppinglistController@findListByCreatorId');
+Route::get('helper/{id}', 'ShoppinglistController@findListByHelperId');
+Route::get('lists', 'ShoppinglistController@findListWithoutHelperId');
+
+Route::put('list/{id}', 'ShoppinglistController@updateList');
+Route::put('feedback/{id}', 'ShoppinglistController@saveFeedback'); */
 
 Route::group(['middleware' => [ 'api' , 'cors' ]], function () {
     Route::post( 'auth/login' , 'Auth\ApiAuthController@login');

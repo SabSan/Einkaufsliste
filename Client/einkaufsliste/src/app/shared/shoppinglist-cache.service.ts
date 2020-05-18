@@ -17,32 +17,7 @@ export class ShoppinglistCacheService {
   //shoppinglists: Shoppinglist[];
 
   constructor(private http: HttpClient) {
-    /*this.shoppinglists = [new Shoppinglist(3,
-      'Eine Liste',
-      new Date(2020, 5, 1),
-      20.15,
-      3,
-      4,
-      [new Listentry(2, 'Schokolade', '2 Tafeln', 4, 3),
-        new Listentry(3, 'Milch', '1 Flasche', 1, 3)],
-      [new User(3, 'Peter', 'Müller', 'Aisttal 3, 4232 Hagenberg', 'P@M.at',
-        'secret', 'creator')],
-      [new User(4, 'Peter', 'Müller', 'Aisttal 3, 4232 Hagenberg', 'P@M.at',
-        'secret', 'helper')]
-    ),
-      new Shoppinglist(4,
-        'Eine zweite Liste',
-        new Date(2020, 4, 22),
-        13,
-        3,
-        4,
-        [new Listentry(2, 'Schokolade', '2 Tafeln', 4, 3),
-          new Listentry(3, 'Milch', '1 Flasche', 1, 3)],
-        [new User(3, 'Peter', 'Müller', 'Aisttal 3, 4232 Hagenberg', 'P@M.at',
-          'secret', 'creator')],
-        [new User(4, 'Peter', 'Müller', 'Aisttal 3, 4232 Hagenberg', 'P@M.at',
-          'secret', 'helper')]
-      )];*/
+
   }
 
   getAll(): Observable<Array<Shoppinglist>> {

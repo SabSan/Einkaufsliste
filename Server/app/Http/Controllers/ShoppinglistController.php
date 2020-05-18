@@ -20,9 +20,7 @@ class ShoppinglistController extends Controller
     }
 
     public function findListById(int $id){
-        // Bei First im SL-Details res[0] weggeben
         $lists = Shoppinglist::where('id', $id)->with(['listentries', 'creator', 'helper', 'feedbacks'])->first();
-        //$lists = Shoppinglist::where('id', $id)->with(['listentries', 'creator', 'helper', 'feedbacks'])->get();
         return $lists;
     }
 
@@ -53,7 +51,6 @@ class ShoppinglistController extends Controller
     }
 
     public function saveList(Request $request): JsonResponse {
-
         //var_dump($request->all()); die();
         DB::beginTransaction();
         try{
@@ -65,19 +62,15 @@ class ShoppinglistController extends Controller
                     $shoppinglist->listentries()->save($listentry);
                 }
             }
-
             if (isset($request['feedbacks']) && is_array($request['feedbacks'])) {
                 foreach ($request['feedbacks'] as $fb ) {
                     $feedback = Feedback::firstOrNew([ 'body'=>$fb['body'], 'user_id'=> $fb['user_id'] ]);
                     $shoppinglist->feedbacks()->save($feedback);
                 }
             }
-
             DB::commit();
             return response()->json($shoppinglist, 201);
-        }
-
-        catch(\Exception $e) {
+        } catch(\Exception $e) {
             DB::rollBack();
             return response()->json("saving list failed: " . $e->getMessage(), 420);
         }
@@ -100,7 +93,6 @@ class ShoppinglistController extends Controller
                 }
                 $shoppinglist->save();
             }
-
             DB::commit();
             $shoppinglist1 = Shoppinglist::with(['listentries', 'creator', 'helper', 'feedbacks'])->where('id', $id)->first();
             return response()->json($shoppinglist1 ,201);
@@ -113,11 +105,9 @@ class ShoppinglistController extends Controller
 
     public function saveFeedback(Request $request, int $id){
         DB::beginTransaction();
-        //$feedback = Feedback::create($request->all());
-        //$shoppinglist = Shoppinglist::with(['listentries', 'creator', 'helper', 'feedbacks'])->where('id', $id)->first();
         try {
             $shoppinglist = Shoppinglist::with(['listentries', 'creator', 'helper', 'feedbacks'])->where('id', $id)->first();
-            $feedback = Feedback::create($request->all());
+            // $feedback = Feedback::create($request->all());
             if($shoppinglist != null){
                 $request = $this->parseRequest( $request );
                 // save feedback

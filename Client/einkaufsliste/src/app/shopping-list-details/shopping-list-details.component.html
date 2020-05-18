@@ -71,27 +71,6 @@
       </div>
 
       <form class="ui large form" *ngIf="feedbackForm" [formGroup]="feedbackForm" (ngSubmit)="submitForm()">
-        <!-- <form class="ui large form" *ngIf="shoppinglistForm" [formGroup]="shoppinglistForm" (ngSubmit)="submitForm()">
-          <div class="field">
-            <div formArrayName="feedbacks">
-              <div class="fields" *ngFor="let control of feedbacks?.controls; index as i; last as l" [formGroupName]="i">
-                <input type="hidden" name="user_id">
-                <div class="nine wide field">
-                  <label>Kommentar-Titel:</label>
-                  <input formControlName="title" placeholder="Kommentar-Titel" >
-                </div>
-                <div class="nine wide field">
-                  <label>Kommentar:</label>
-                  <input formControlName="body" placeholder="Kommentar" >
-                </div>
-              </div>
-            </div>
-          </div>
-
-        <div class="field">
-          <label>Titel des Kommentars <b>(optional)</b></label>
-          <input type="text" formControlName="title" placeholder="Titel des Kommentars">
-        </div>-->
 
         <div class="field">
           <label>Kommentar</label>

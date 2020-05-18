@@ -46,7 +46,6 @@ export class AuthenticationService {
   }
 
   public getCurrentUserRole(){
-    //console.log("getrole");
     return String(localStorage.getItem('role'));
   }
 

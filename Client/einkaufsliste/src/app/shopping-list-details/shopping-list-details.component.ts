@@ -49,7 +49,6 @@ export class ShoppingListDetailsComponent implements OnInit {
     this.feedbackForm = this.fb.group({
       body: this.feedback.body
     });
-
   }
 
   removeList() {
